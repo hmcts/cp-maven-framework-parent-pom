@@ -3,7 +3,11 @@ All notable changes to this project will be documented in this file, which follo
 on [Keep a CHANGELOG](http://keepachangelog.com/). This project adheres to
 [Semantic Versioning](http://semver.org/).
 
-## Unreleased
+## Unreleased 
+### Removed
+- generator-maven-plugin.version property from pom
+- json-schema-catalog.version property from pom
+
 ## [1.12.3] - 2018-06-21
 ### Changed
 - Updated generator-maven-plugin version to 2.5.1 to fix apache tika security issues
