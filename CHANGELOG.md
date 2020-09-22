@@ -5,6 +5,12 @@ on [Keep a CHANGELOG](http://keepachangelog.com/). This project adheres to
 
 ## Unreleased
 
+## [2.0.0] - 2018-11-02
+### Changed
+- Updated parent maven-parent-pom to version 2.0.0
+- Moved to new Cloudsmith.io repository for hosting maven artifacts
+- Updated encrypted properties in travis.yaml to point to cloudsmith
+
 ## [1.13.0] - 2018-07-05
 ### Removed
 - generator-maven-plugin.version maven property
