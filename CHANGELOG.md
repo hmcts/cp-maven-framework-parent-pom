@@ -5,7 +5,7 @@ on [Keep a CHANGELOG](http://keepachangelog.com/). This project adheres to
 
 ## Unreleased
 
-## [2.0.0] - 2018-11-02
+## [2.0.0] - 2020-09-22
 ### Changed
 - Updated parent maven-parent-pom to version 2.0.0
 - Moved to new Cloudsmith.io repository for hosting maven artifacts
