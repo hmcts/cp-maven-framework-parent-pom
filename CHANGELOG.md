@@ -4,6 +4,10 @@ on [Keep a CHANGELOG](http://keepachangelog.com/). This project adheres to
 [Semantic Versioning](http://semver.org/).
 
 ## Unreleased
+## [8.0.0-M1] - 2020-12-09
+### Changed
+- Update to Java 11
+    - Update maven-parent-pom to 8.0.0-M1
 
 ## [2.0.0] - 2020-09-22
 ### Changed
