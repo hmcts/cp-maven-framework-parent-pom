@@ -4,6 +4,12 @@ on [Keep a CHANGELOG](http://keepachangelog.com/). This project adheres to
 [Semantic Versioning](http://semver.org/).
 
 ## Unreleased
+
+## [11.0.0-M4] - 2020-05-17
+### Changed
+- Update maven-parent-pom to 11.0.0-M4 in order to
+  - Update liquibase to 4.10.0
+
 ## [11.0.0-M3] - 2020-05-07
 ### Changed
 - Update maven-parent-pom to 11.0.0-M3
