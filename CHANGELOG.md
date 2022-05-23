@@ -5,6 +5,11 @@ on [Keep a CHANGELOG](http://keepachangelog.com/). This project adheres to
 
 ## Unreleased
 
+## [11.0.0-M6] - 2020-05-23
+### Changed
+- Moved liquibase dependency versions to maven-parent-pom
+- Update maven-parent-pom to 11.0.0-M5 
+
 ## [11.0.0-M5] - 2020-05-17
 ### Changed
 - Update maven-parent-pom to 11.0.0-M4 in order to
