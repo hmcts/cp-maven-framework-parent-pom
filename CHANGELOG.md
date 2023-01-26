@@ -5,38 +5,14 @@ on [Keep a CHANGELOG](http://keepachangelog.com/). This project adheres to
 
 ## Unreleased
 
-## [11.0.0-M6] - 2020-05-23
-### Changed
-- Moved liquibase dependency versions to maven-parent-pom
-- Update maven-parent-pom to 11.0.0-M5 
 
-## [11.0.0-M5] - 2020-05-17
+## [11.0.0] - 2023-01-25
 ### Changed
-- Update maven-parent-pom to 11.0.0-M4 in order to
-  - Update liquibase to 4.10.0
-
-## [11.0.0-M3] - 2020-05-07
-### Changed
-- Update maven-parent-pom to 11.0.0-M3
-
-## [11.0.0-M2] - 2020-02-04
-### Changed
-- Update to JEE 8
-- Update maven-parent-pom to 11.0.0-M1
-
-## [11.0.0-M1] - 2021-01-25
-### Changed
-- Bumped version to 11.0.0 to match new framework version
-- Update maven-parent-pom to 11.0.0-M1
-
-## [8.0.0-M2] - 2020-12-11
-### Changed
-- Update maven-parent-pom to 8.0.0-M3
-
-## [8.0.0-M1] - 2020-12-09
-### Changed
+- Bumped the version number to 11.0.0 to match the java 11 versions of the framework
 - Update to Java 11
-    - Update maven-parent-pom to 8.0.0-M1
+- Update to JEE 8
+- Bumped version to 11.0.0 to match new framework version
+- Moved liquibase dependency versions to maven-parent-pom
 
 ## [2.0.0] - 2020-09-22
 ### Changed
