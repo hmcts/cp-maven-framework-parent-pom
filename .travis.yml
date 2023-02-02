@@ -1,8 +1,8 @@
-dist: trusty
-sudo: false
+dist: xenial
 language: java
+os: linux
 jdk:
-- openjdk11
+  - openjdk17
 git:
   depth: 3
 cache:
