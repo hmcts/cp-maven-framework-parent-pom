@@ -4,6 +4,10 @@ on [Keep a CHANGELOG](http://keepachangelog.com/). This project adheres to
 [Semantic Versioning](http://semver.org/).
 
 ## Unreleased
+## [17.0.0-M3] - 2023-03-08
+### Changed
+- Update parent-pom to 17.0.0-M3
+
 ## [17.0.0-M2] - 2023-02-15
 ### Changed
 - Update parent-pom
