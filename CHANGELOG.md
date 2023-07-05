@@ -7,6 +7,10 @@ on [Keep a CHANGELOG](http://keepachangelog.com/). This project adheres to
 
 ## [17.0.0] - 2023-05-05
 ### Changed
+- Update maven-parent-pom to 17.1.0
+
+## [17.0.0] - 2023-05-05
+### Changed
 - Update to Java 17
 - Remove illegal-access argument from surefire plugin from plugin management (through maven-parent-pom 17.0.0-M6)
 - Remove illegal-access argument (not valid for java 17) from sure fire plugin (through maven-parent-pom)
