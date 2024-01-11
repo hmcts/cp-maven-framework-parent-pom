@@ -5,6 +5,11 @@ on [Keep a CHANGELOG](http://keepachangelog.com/). This project adheres to
 
 ## Unreleased
 
+## [8.0.0] - 2024-01-11
+### Changed
+- Created java 8 release branch
+- Bumped version to 8.0.0 for java 8 branch
+
 ## [2.0.1] - 2021-10-04
 ### Changed
 - Re-release of pom to fix corrupt file in artifactory. No other changes
