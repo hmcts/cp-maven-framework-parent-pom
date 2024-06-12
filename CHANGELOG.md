@@ -5,6 +5,10 @@ on [Keep a CHANGELOG](http://keepachangelog.com/). This project adheres to
 
 ## Unreleased
 
+## [17.1.1] - 2024-06-12
+### Added
+- Add maven-sonar-plugin to pluginManagement (through maven-parent-pom)
+
 ## [17.1.0] - 2023-05-05
 ### Changed
 - Update maven-parent-pom to 17.1.0
