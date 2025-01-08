@@ -6,7 +6,7 @@ on [Keep a CHANGELOG](http://keepachangelog.com/). This project adheres to
 ## Unreleased
 ### Changed
 - Update maven-parent-pom to 17.101.0
-- Update project version to 17.101.0-SNAPSHOT
+- Update postgresql.driver.version to 42.3.2 (through maven-parent-pom)
 
 ## [17.1.1] - 2024-06-12
 ### Added
