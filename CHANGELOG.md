@@ -5,6 +5,10 @@ on [Keep a CHANGELOG](http://keepachangelog.com/). This project adheres to
 
 ## Unreleased
 
+### Changed
+- Updated postgresql.driver.version to 42.3.2 through maven-parent-pom. 
+- Updated maven-parent-pom to 8.0.1.
+
 ## [8.0.0] - 2024-01-11
 ### Changed
 - Created java 8 release branch
