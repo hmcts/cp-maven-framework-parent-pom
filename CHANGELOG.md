@@ -4,6 +4,9 @@ on [Keep a CHANGELOG](http://keepachangelog.com/). This project adheres to
 [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+
+## [17.103.0] - 2025-07-11
+### Changed
 - Github migration to HMCTS Organisation
 - Update maven-parent-pom to 17.103.0
 
