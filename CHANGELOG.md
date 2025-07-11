@@ -5,6 +5,7 @@ on [Keep a CHANGELOG](http://keepachangelog.com/). This project adheres to
 
 ## [Unreleased]
 - Github migration to HMCTS Organisation
+- Update maven-parent-pom to 17.103.0
 
 ## [17.101.0] - 2025-01-08
 ### Changed
