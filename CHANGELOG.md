@@ -5,6 +5,10 @@ on [Keep a CHANGELOG](http://keepachangelog.com/). This project adheres to
 
 ## [Unreleased]
 
+## [17.105.0-M1] - 2026-02-03
+### Changed
+- `skipTests` should skip liquibase apply step
+
 ## [17.103.0] - 2025-07-11
 ### Changed
 - Github migration to HMCTS Organisation
