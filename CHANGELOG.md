@@ -5,6 +5,13 @@ on [Keep a CHANGELOG](http://keepachangelog.com/). This project adheres to
 
 ## [Unreleased]
 
+## [21.0.0-SNAPSHOT] - 2026-03-26
+### Changed
+- Upgraded to Java 21 and Jakarta EE 10
+- Updated WildFly Maven plugin from `1.2.0.Final` to `4.2.2.Final`
+- Added `exec-maven-plugin` `3.0.0` to `pluginManagement`
+- Added `jandex-index` profile: auto-generates `META-INF/jandex.idx` via `io.smallrye:jandex:3.1.6` CLI during `process-classes` for all modules with `src/main/java` — required for WildFly to scan annotations in WEB-INF/lib JARs when deployed without `web.xml`
+
 ## [17.105.0-M1] - 2026-02-03
 ### Changed
 - `skipTests` should skip liquibase apply step
