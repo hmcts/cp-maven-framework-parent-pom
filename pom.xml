@@ -7,17 +7,20 @@
     <parent>
         <groupId>uk.gov.justice</groupId>
         <artifactId>maven-parent-pom</artifactId>
-        <version>17.103.0</version>
+        <version>21.0.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>maven-framework-parent-pom</artifactId>
-    <version>17.105.0-M2-SNAPSHOT</version>
+    <version>21.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>Framework parent POM</name>
     <description>Parent POM for the Microservices framework</description>
 
     <properties>
-        <plugins.maven.wildfly.version>1.2.0.Final</plugins.maven.wildfly.version>
+        <plugins.maven.wildfly.version>4.2.2.Final</plugins.maven.wildfly.version>
+        <plugins.h2-maven.version>1.0</plugins.h2-maven.version>
+        <plugins.exec-maven.version>3.0.0</plugins.exec-maven.version>
+        <jandex.version>3.1.6</jandex.version>
         <cpp.repo.name>maven-framework-parent-pom</cpp.repo.name>
     </properties>
 
@@ -26,6 +29,18 @@
         <developerConnection>${cpp.scm.developerConnection}</developerConnection>
         <url>${cpp.scm.url}</url>
     </scm>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>uk.gov.justice</groupId>
+                <artifactId>maven-common-bom</artifactId>
+                <version>21.0.0-SNAPSHOT</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <!--
     =====
@@ -58,7 +73,7 @@
                 <plugin>
                     <groupId>com.edugility</groupId>
                     <artifactId>h2-maven-plugin</artifactId>
-                    <version>1.0</version>
+                    <version>${plugins.h2-maven.version}</version>
                     <dependencies>
                         <dependency>
                             <groupId>com.h2database</groupId>
@@ -94,6 +109,12 @@
                             <version>${hibernate.version}</version>
                         </dependency>
                     </dependencies>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>exec-maven-plugin</artifactId>
+                    <version>${plugins.exec-maven.version}</version>
                 </plugin>
 
                 <plugin>
@@ -208,6 +229,21 @@
                                     </includes>
                                 </configuration>
                             </execution>
+                            <execution>
+                                <id>raml-test</id>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                                <phase>generate-test-resources</phase>
+                                <configuration>
+                                    <classifier>raml</classifier>
+                                    <classesDirectory>${project.basedir}/src</classesDirectory>
+                                    <includes>
+                                        <include>raml/**</include>
+                                    </includes>
+                                    <outputDirectory>${project.build.directory}</outputDirectory>
+                                </configuration>
+                            </execution>
                         </executions>
                     </plugin>
                 </plugins>
@@ -266,24 +302,55 @@
                 <dependency>
                     <groupId>org.liquibase</groupId>
                     <artifactId>liquibase-core</artifactId>
-                    <version>${liquibase.version}</version>
                 </dependency>
                 <dependency>
                     <groupId>org.postgresql</groupId>
                     <artifactId>postgresql</artifactId>
-                    <version>${postgresql.driver.version}</version>
                 </dependency>
                 <dependency>
                     <groupId>org.yaml</groupId>
                     <artifactId>snakeyaml</artifactId>
-                    <version>${snakeyaml.version}</version>
                 </dependency>
                 <dependency>
                     <groupId>info.picocli</groupId>
                     <artifactId>picocli</artifactId>
-                    <version>${picocli.version}</version>
                 </dependency>
             </dependencies>
+        </profile>
+
+        <profile>
+            <id>jandex-index</id>
+            <activation>
+                <file>
+                    <exists>src/main/java</exists>
+                </file>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>exec-maven-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>generate-jandex-index</id>
+                                <phase>process-classes</phase>
+                                <goals>
+                                    <goal>exec</goal>
+                                </goals>
+                                <configuration>
+                                    <executable>java</executable>
+                                    <arguments>
+                                        <argument>-jar</argument>
+                                        <argument>${settings.localRepository}/io/smallrye/jandex/${jandex.version}/jandex-${jandex.version}.jar</argument>
+                                        <argument>-m</argument>
+                                        <argument>${project.build.outputDirectory}</argument>
+                                    </arguments>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
         </profile>
 
     </profiles>
