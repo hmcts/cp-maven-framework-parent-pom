@@ -5,13 +5,16 @@ on [Keep a CHANGELOG](http://keepachangelog.com/). This project adheres to
 
 ## [Unreleased]
 
-## [21.0.0-SNAPSHOT] - 2026-03-26
+## [21.0.0-M1] - 2026-06-02
 ### Changed
-- Upgraded to Java 21 and Jakarta EE 10
+- Upgraded to Java 21 and Jakarta EE 10 (17.104.x release line)
 - Updated WildFly Maven plugin from `1.2.0.Final` to `4.2.2.Final`
+- Added `jandex-index` profile: auto-generates `META-INF/jandex.idx` via `io.smallrye:jandex:3.1.6` during `process-classes` for all modules with `src/main/java` — required for WildFly 32 to scan CDI annotations in `WEB-INF/lib` JARs
+- Added `maven-common-bom` as an imported BOM in `dependencyManagement`; `maven.common.bom.version` property controls the imported version
 - Added `exec-maven-plugin` `3.0.0` to `pluginManagement`
-- Added `jandex-index` profile: auto-generates `META-INF/jandex.idx` via `io.smallrye:jandex:3.1.6` CLI during `process-classes` for all modules with `src/main/java` — required for WildFly to scan annotations in WEB-INF/lib JARs when deployed without `web.xml`
 
+### Fixed
+- Declared `io.smallrye:jandex` as an explicit dependency of the `exec-maven-plugin` in the `jandex-index` profile — previously the plugin assumed jandex was already in the local Maven repository, causing `Error: Unable to access jarfile .../jandex-3.1.6.jar` failures on CI agents with a fresh Maven cache
 
 ## [17.103.0] - 2025-07-11
 ### Changed
