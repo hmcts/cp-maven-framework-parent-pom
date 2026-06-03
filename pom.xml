@@ -22,7 +22,7 @@
         <plugins.exec-maven.version>3.0.0</plugins.exec-maven.version>
         <jandex.version>3.1.6</jandex.version>
         <cpp.repo.name>maven-framework-parent-pom</cpp.repo.name>
-        <maven.common.bom.version>21.0.0-M1</maven.common.bom.version>
+        <maven.common.bom.version>21.0.0-M2</maven.common.bom.version>
     </properties>
 
     <scm>
