@@ -7,22 +7,22 @@
     <parent>
         <groupId>uk.gov.justice</groupId>
         <artifactId>maven-parent-pom</artifactId>
-        <version>21.0.0-M1</version>
+        <version>25.104.0-M1</version>
     </parent>
 
     <artifactId>maven-framework-parent-pom</artifactId>
-    <version>21.0.0-M4-SNAPSHOT</version>
+    <version>25.104.0-M1-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>Framework parent POM</name>
     <description>Parent POM for the Microservices framework</description>
 
     <properties>
-        <plugins.maven.wildfly.version>4.2.2.Final</plugins.maven.wildfly.version>
+        <plugins.maven.wildfly.version>6.0.0.Final</plugins.maven.wildfly.version>
         <plugins.h2-maven.version>1.0</plugins.h2-maven.version>
         <plugins.exec-maven.version>3.0.0</plugins.exec-maven.version>
         <jandex.version>3.1.6</jandex.version>
         <cpp.repo.name>maven-framework-parent-pom</cpp.repo.name>
-        <maven.common.bom.version>21.0.0-M2</maven.common.bom.version>
+        <maven.common.bom.version>25.104.0-M1</maven.common.bom.version>
     </properties>
 
     <scm>
