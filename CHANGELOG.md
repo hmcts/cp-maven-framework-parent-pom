@@ -5,13 +5,21 @@ on [Keep a CHANGELOG](http://keepachangelog.com/). This project adheres to
 
 ## [Unreleased]
 
-## [21.0.0-M3] - 2026-06-02
+## [25.104.0-M2] - 2026-06-08
 ### Changed
+- Bumped `maven-parent-pom` to `25.104.0-M2`
+- Bumped `maven.common.bom.version` to `25.104.0-M2`
+
+## [25.104.0-M1] - 2026-06-08
+### Changed
+- Upgraded to Java 25 / WildFly 40 / Jakarta EE 11 (25.104.x release line)
 - Upgraded to Java 21 and Jakarta EE 10 (17.104.x release line)
-- Updated WildFly Maven plugin from `1.2.0.Final` to `4.2.2.Final`
+- Upgraded `wildfly-maven-plugin` from `1.2.0.Final` to `6.0.0.Final`
 - Added `jandex-index` profile: auto-generates `META-INF/jandex.idx` via `io.smallrye:jandex:3.1.6` during `process-classes` for all modules with `src/main/java` — required for WildFly 32 to scan CDI annotations in `WEB-INF/lib` JARs
 - Added `maven-common-bom` as an imported BOM in `dependencyManagement`; `maven.common.bom.version` property controls the imported version
 - Added `exec-maven-plugin` `3.0.0` to `pluginManagement`
+- Bumped `maven-parent-pom` to `25.104.0-M1`
+- Bumped `maven.common.bom.version` to `25.104.0-M1`
 
 ### Fixed
 - Declared `io.smallrye:jandex` as an explicit dependency of the `exec-maven-plugin` in the `jandex-index` profile — previously the plugin assumed jandex was already in the local Maven repository, causing `Error: Unable to access jarfile .../jandex-3.1.6.jar` failures on CI agents with a fresh Maven cache
