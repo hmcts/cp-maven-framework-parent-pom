@@ -11,7 +11,7 @@
     </parent>
 
     <artifactId>maven-framework-parent-pom</artifactId>
-    <version>25.104.0-M5-SNAPSHOT</version>
+    <version>25.104.0-M5</version>
     <packaging>pom</packaging>
     <name>Framework parent POM</name>
     <description>Parent POM for the Microservices framework</description>
@@ -35,7 +35,14 @@
         -->
         <jakarta.xml.bind-api.raml.version>2.3.2</jakarta.xml.bind-api.raml.version>
 
-        <liquibase.maven.plugin.version>4.30.0</liquibase.maven.plugin.version>
+        <!--
+            snakeyaml version for the Liquibase fat JAR only. Liquibase 4.30.0 requires
+            snakeyaml 2.x (e.g. TagInspector added in 2.0). The project classpath uses
+            snakeyaml 1.33 (see cp-maven-parent-pom) to keep the RAML parser working.
+            The fat JAR's snakeyaml is relocated (see shade config) so it cannot conflict
+            with the Liquibase Maven plugin's own snakeyaml on the classloader.
+        -->
+        <snakeyaml.liquibase.version>2.3</snakeyaml.liquibase.version>
     </properties>
 
     <scm>
@@ -78,7 +85,7 @@
                 <plugin>
                     <groupId>org.liquibase</groupId>
                     <artifactId>liquibase-maven-plugin</artifactId>
-                    <version>${liquibase.maven.plugin.version}</version>
+                    <version>${liquibase.version}</version>
                     <configuration>
                         <skip>${skipTests}</skip>
                     </configuration>
@@ -299,6 +306,26 @@
                             <dependencyReducedPomLocation>
                                 ${project.build.directory}/dependency-reduced-pom.xml
                             </dependencyReducedPomLocation>
+                            <artifactSet>
+                                <excludes>
+                                    <!-- Not needed: we only use open-source Liquibase operations. -->
+                                    <exclude>org.liquibase:liquibase-commercial</exclude>
+                                </excludes>
+                            </artifactSet>
+                            <relocations>
+                                <!--
+                                    Relocate snakeyaml into a private package so that when this fat
+                                    JAR is added to the liquibase-maven-plugin classpath, the bundled
+                                    snakeyaml cannot shadow the plugin's own snakeyaml 2.x. Without
+                                    relocation, snakeyaml 1.x from the fat JAR hides TagInspector
+                                    (snakeyaml 2.x) that liquibase-commercial:4.30.0 requires,
+                                    causing ServiceConfigurationError on ChecksCreateCommandStep.
+                                -->
+                                <relocation>
+                                    <pattern>org.yaml.snakeyaml</pattern>
+                                    <shadedPattern>uk.gov.justice.shaded.snakeyaml</shadedPattern>
+                                </relocation>
+                            </relocations>
                         </configuration>
                         <executions>
                             <execution>
@@ -324,6 +351,7 @@
                 <dependency>
                     <groupId>org.yaml</groupId>
                     <artifactId>snakeyaml</artifactId>
+                    <version>${snakeyaml.liquibase.version}</version>
                 </dependency>
                 <dependency>
                     <groupId>info.picocli</groupId>
