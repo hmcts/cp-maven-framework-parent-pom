@@ -7,11 +7,11 @@
     <parent>
         <groupId>uk.gov.justice</groupId>
         <artifactId>maven-parent-pom</artifactId>
-        <version>25.104.0-M3</version>
+        <version>25.104.0-M4</version>
     </parent>
 
     <artifactId>maven-framework-parent-pom</artifactId>
-    <version>25.104.0-M4-SNAPSHOT</version>
+    <version>25.104.0-M4</version>
     <packaging>pom</packaging>
     <name>Framework parent POM</name>
     <description>Parent POM for the Microservices framework</description>
@@ -22,7 +22,7 @@
         <plugins.exec-maven.version>3.0.0</plugins.exec-maven.version>
         <jandex.version>3.1.6</jandex.version>
         <cpp.repo.name>maven-framework-parent-pom</cpp.repo.name>
-        <maven.common.bom.version>25.104.0-M3</maven.common.bom.version>
+        <maven.common.bom.version>25.104.0-M4</maven.common.bom.version>
 
         <!--
             jakarta.xml.bind-api is managed by the BOM at 4.0.0 (Jakarta EE 10,
@@ -35,9 +35,6 @@
         -->
         <jakarta.xml.bind-api.raml.version>2.3.2</jakarta.xml.bind-api.raml.version>
 
-        <!-- liquibase-maven-plugin: 4.24–4.29 have mojo loading failures (LOG_FORMAT removed,
-             AbstractLogger API break); 4.30.0 restores the stable API. Pin separately from
-             ${liquibase.version} (library) which remains at 4.27.0 for runtime compatibility. -->
         <liquibase.maven.plugin.version>4.30.0</liquibase.maven.plugin.version>
     </properties>
 
