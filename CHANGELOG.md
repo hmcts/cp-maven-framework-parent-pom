@@ -5,6 +5,11 @@ on [Keep a CHANGELOG](http://keepachangelog.com/). This project adheres to
 
 ## [Unreleased]
 
+## [25.104.0-M7] - 2026-06-18
+### Changed
+- Bumped parent `maven-parent-pom` to `25.104.0-M5` — picks up `liquibase.version=5.0.3`
+- Bumped `maven.common.bom.version` to `25.104.0-M5`
+
 ## [25.104.0-M2] - 2026-06-08
 ### Changed
 - Bumped `maven-parent-pom` to `25.104.0-M2`
