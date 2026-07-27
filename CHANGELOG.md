@@ -5,6 +5,11 @@ on [Keep a CHANGELOG](http://keepachangelog.com/). This project adheres to
 
 ## [Unreleased]
 
+## [25.104.0-M8] - 2026-07-27
+### Changed
+- Bumped `maven.common.bom.version` to `25.104.0-M6` — picks up Jackson `2.21.5` (**CVE-2026-54515**) and the `org.junit:junit-bom` import.
+- Bumped parent `maven-parent-pom` to `25.104.0-M7` — removes the dead `buildnumber-maven-plugin` `useLatestCommittedRevision` parameter (build-warning fix).
+
 ## [25.104.0-M7] - 2026-06-18
 ### Changed
 - Bumped parent `maven-parent-pom` to `25.104.0-M5` — picks up `liquibase.version=5.0.3`
