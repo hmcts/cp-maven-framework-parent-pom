@@ -5,6 +5,10 @@ on [Keep a CHANGELOG](http://keepachangelog.com/). This project adheres to
 
 ## [Unreleased]
 
+## [25.104.0-M9] - 2026-08-05
+### Changed
+- Bumped `maven.common.bom.version` to `25.104.0-M7` — picks up the Apache Artemis client bump `2.53.0` → `2.54.0`, matching the Artemis `2.54.0` broker in `cpp-developers-docker` and the Java-17/production Artemis upgrade.
+
 ## [25.104.0-M8] - 2026-07-27
 ### Changed
 - Bumped `maven.common.bom.version` to `25.104.0-M6` — picks up Jackson `2.21.5` (**CVE-2026-54515**) and the `org.junit:junit-bom` import.
