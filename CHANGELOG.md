@@ -5,35 +5,24 @@ on [Keep a CHANGELOG](http://keepachangelog.com/). This project adheres to
 
 ## [Unreleased]
 
-## [25.104.0-M9] - 2026-08-05
-### Changed
-- Bumped `maven.common.bom.version` to `25.104.0-M7` — picks up the Apache Artemis client bump `2.53.0` → `2.54.0`, matching the Artemis `2.54.0` broker in `cpp-developers-docker` and the Java-17/production Artemis upgrade.
+## [25.104.0] - 2026-09-07
+First official (non-milestone) release of the Java 25 / WildFly 40 / Jakarta EE 11 line,
+consolidating milestones `25.104.0-M1` to `25.104.0-M9` and the never-released Java 21 /
+Jakarta EE 10 step that preceded them.
 
-## [25.104.0-M8] - 2026-07-27
-### Changed
-- Bumped `maven.common.bom.version` to `25.104.0-M6` — picks up Jackson `2.21.5` (**CVE-2026-54515**) and the `org.junit:junit-bom` import.
-- Bumped parent `maven-parent-pom` to `25.104.0-M7` — removes the dead `buildnumber-maven-plugin` `useLatestCommittedRevision` parameter (build-warning fix).
+### Added
+- `maven-common-bom` as an imported BOM in `dependencyManagement`; the `maven.common.bom.version` property controls the imported version
+- `jandex-index` profile: auto-generates `META-INF/jandex.idx` via `io.smallrye:jandex:3.1.6` during `process-classes` for all modules with `src/main/java` — required for WildFly 32 and later to scan CDI annotations in `WEB-INF/lib` JARs
+- `exec-maven-plugin` `3.0.0` to `pluginManagement`
+- `jakarta.xml.bind-api.raml.version` (`2.3.2`), centralised here after being duplicated in the `cp-framework-libraries`, `cp-microservice-framework` and `cp-event-store` root poms. The RAML parser (`org.raml:raml-parser`) and `coveralls-maven-plugin` `4.3.0` use `javax.xml.bind.*` internally, which only exists in the 2.x line — any plugin using either must pin its runtime classpath to this version, so it must NOT be upgraded to 3.x or 4.x
+- `snakeyaml.liquibase.version` (`2.3`), used to pin snakeyaml inside the Liquibase fat JAR only; the project classpath stays on snakeyaml `1.33` to keep the RAML parser working
+- `maven-shade-plugin` configuration for the Liquibase fat JAR: an `artifactSet` exclusion of `org.liquibase:liquibase-commercial` (only open-source Liquibase operations are used), and relocation of `org.yaml.snakeyaml` to `uk.gov.justice.shaded.snakeyaml` so the bundled snakeyaml cannot shadow the `liquibase-maven-plugin`'s own snakeyaml 2.x — without it, snakeyaml 1.x hides `TagInspector` and Liquibase fails with `ServiceConfigurationError` on `ChecksCreateCommandStep`
 
-## [25.104.0-M7] - 2026-06-18
 ### Changed
-- Bumped parent `maven-parent-pom` to `25.104.0-M5` — picks up `liquibase.version=5.0.3`
-- Bumped `maven.common.bom.version` to `25.104.0-M5`
-
-## [25.104.0-M2] - 2026-06-08
-### Changed
-- Bumped `maven-parent-pom` to `25.104.0-M2`
-- Bumped `maven.common.bom.version` to `25.104.0-M2`
-
-## [25.104.0-M1] - 2026-06-08
-### Changed
-- Upgraded to Java 25 / WildFly 40 / Jakarta EE 11 (25.104.x release line)
-- Upgraded to Java 21 and Jakarta EE 10 (17.104.x release line)
+- Upgraded to Java 25 / WildFly 40 / Jakarta EE 11 (`25.104.x` release line)
 - Upgraded `wildfly-maven-plugin` from `1.2.0.Final` to `6.0.0.Final`
-- Added `jandex-index` profile: auto-generates `META-INF/jandex.idx` via `io.smallrye:jandex:3.1.6` during `process-classes` for all modules with `src/main/java` — required for WildFly 32 to scan CDI annotations in `WEB-INF/lib` JARs
-- Added `maven-common-bom` as an imported BOM in `dependencyManagement`; `maven.common.bom.version` property controls the imported version
-- Added `exec-maven-plugin` `3.0.0` to `pluginManagement`
-- Bumped `maven-parent-pom` to `25.104.0-M1`
-- Bumped `maven.common.bom.version` to `25.104.0-M1`
+- Bumped parent `maven-parent-pom` to the released `25.104.0` — Java 25 / Jakarta EE 11 targeting (`java.major.version=25`, `enforcer.java.version.range=[25,)`), `liquibase.version=5.0.3`, and the `buildnumber-maven-plugin` / `build-helper-maven-plugin` build-warning fixes
+- Bumped `maven.common.bom.version` to the released `25.104.0` — Jakarta EE 11 API set, WildFly `40.0.0.Final`, Weld 6, RESTEasy 7, Apache Artemis `2.54.0` under the new `org.apache.artemis` groupId, Jackson `2.21.5` (**CVE-2026-54515**) and the `org.junit:junit-bom` import
 
 ### Fixed
 - Declared `io.smallrye:jandex` as an explicit dependency of the `exec-maven-plugin` in the `jandex-index` profile — previously the plugin assumed jandex was already in the local Maven repository, causing `Error: Unable to access jarfile .../jandex-3.1.6.jar` failures on CI agents with a fresh Maven cache
