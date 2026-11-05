@@ -5,6 +5,11 @@ on [Keep a CHANGELOG](http://keepachangelog.com/). This project adheres to
 
 ## [Unreleased]
 
+## [25.104.4] - 2026-11-05
+### Changed
+- Updated the imported `maven-common-bom` to 25.104.4: Hibernate ORM 6.6.1.Final → 7.3.2.Final, the version WildFly
+  40.0.1 ships, plus managed `hibernate-processor` and `hibernate-scan-jandex`
+
 ## [25.104.3] - 2026-10-27
 ### Security
 - Updated the imported `maven-common-bom` to 25.104.3: jackson 2.21.5 → 2.21.8
